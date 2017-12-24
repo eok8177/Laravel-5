@@ -17,10 +17,10 @@
           <form class="form-horizontal" method="POST" action="{{ route('password.email') }}">
             {{ csrf_field() }}
 
-            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+            <div class="form-group">
               <label for="email">E-Mail Address</label>
 
-              <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+              <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
 
               @if ($errors->has('email'))
               <div class="invalid-feedback">{{ $errors->first('email') }}</div>

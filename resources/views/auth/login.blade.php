@@ -8,21 +8,21 @@
         <div class="card-header text-center">Login</div>
 
         <div class="card-body">
-          <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+          <form class="form-horizontal{{ $errors->any() ? ' was-validated' : '' }}" method="POST" action="{{ route('login') }}">
             {{ csrf_field() }}
 
-            <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+            <div class="form-group">
               <label for="username">Login</label>
-              <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
+              <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus>
 
               @if ($errors->has('username'))
               <div class="invalid-feedback">{{ $errors->first('username') }}</div>
               @endif
             </div>
 
-            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+            <div class="form-group">
               <label for="password">Password</label>
-              <input id="password" type="password" class="form-control" name="password" required>
+              <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
               @if ($errors->has('password'))
               <div class="invalid-feedback">{{ $errors->first('password') }}</div>
