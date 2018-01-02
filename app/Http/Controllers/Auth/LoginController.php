@@ -28,7 +28,15 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    // protected $redirectTo = '/home';
+
+    protected function redirectTo()
+    {
+        if (auth()->user()->role == 'admin') {
+            return '/admin/dashboard';
+        }
+        return '/';
+    }
 
     /**
      * Create a new controller instance.
@@ -66,7 +74,8 @@ class LoginController extends Controller
         $user = User::where(['email' => $userSocial->getEmail()])->first();
         if($user){
             Auth::login($user);
-            return redirect()->action('HomeController@index');
+            if ($user->role == 'admin') return redirect('/admin/dashboard');
+            return redirect('/');
         }else{
             return view('auth.register',[
                 'name' => $userSocial->getName(),
