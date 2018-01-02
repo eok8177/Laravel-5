@@ -29,6 +29,9 @@ Route::group(['as' => 'admin.', 'middleware' => 'roles','roles' =>['admin', 'sad
 	App::setLocale('ua');
 	Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
 	Route::resource('user', 'UserController');
+
+	Route::resource('lpz', 'LpzController');
+	Route::resource('work', 'WorkController');
 });
 
 

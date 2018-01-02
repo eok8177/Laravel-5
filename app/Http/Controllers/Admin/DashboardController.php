@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Model\Work;
 
 class DashboardController extends Controller
 {
@@ -14,6 +15,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        return view('admin.dashboard', [
+            'works' => Work::orderBy('id', 'desc')->paginate(15),
+            ]);
     }
 }

@@ -30,16 +30,16 @@
 
             <ul class="navbar-nav flex-row">
               <li class="nav-item">
-                <a href="/" class="nav-link"><i class="fa fa-fw fa-home"></i> <span class="d-none d-md-inline">@lang('message.to_site')</span></a>
+                <a href="/" class="nav-link"><i class="fa fa-fw fa-home"></i> @lang('message.to_site')</a>
               </li>
 
               <li class="nav-item dropdown">
-                  <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> <span class="d-none d-md-inline">{{ Auth::user()->name }}</span></a>
+                  <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {{ Auth::user()->name }}</a>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a href="{{ route('admin.user.edit', ['id' => Auth::user()->id]) }}" class="dropdown-item"><i class="fa fa-fw fa-gear"></i> <span class="d-none d-md-inline">@lang('message.settings')</span></a>
+                    <a href="{{ route('admin.user.edit', ['id' => Auth::user()->id]) }}" class="dropdown-item"><i class="fa fa-fw fa-gear"></i> @lang('message.settings')</a>
                     <a href="{{ route('logout') }}" class="dropdown-item"
                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                        Logout
+                        <i class="fa fa-fw fa-sign-out"></i> @lang('message.logout')
                     </a>
 
                       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
@@ -59,14 +59,17 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <div class="navbar-nav flex-column side-nav">
 
+            <a class="nav-item nav-link" href="{{route('admin.work.create')}}"><i class="fa fa-fw fa-plus"></i> @lang('message.new_work')</a>
+            <a class="nav-item nav-link" href="{{route('admin.work.index')}}"><i class="fa fa-fw fa-list"></i> @lang('message.works')</a>
+            <a class="nav-item nav-link" href="{{route('admin.lpz.index')}}"><i class="fa fa-fw fa-hospital-o"></i> @lang('message.lpz')</a>
+
+            <hr class="border w-100 mt-2">
+
             <a class="nav-item nav-link" data-toggle="collapse" href="#usersNav" role="button" aria-expanded="false"><i class="fa fa-fw fa-users"></i> @lang('message.users')</a>
               <div id="usersNav" class="collapse">
               <a class="nav-item nav-link" href="{{route('admin.user.create')}}"><i class="fa fa-fw fa-user"></i> @lang('message.create')</a>
               <a class="nav-item nav-link" href="{{route('admin.user.index')}}"><i class="fa fa-fw fa-users"></i> @lang('message.users')</a>
             </div>
-
-            <a class="nav-item nav-link" href="#"><i class="fa fa-fw fa-users"></i> @lang('message.item')</a>
-
 
           </div>
         </div>

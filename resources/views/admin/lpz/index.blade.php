@@ -1,37 +1,34 @@
 @extends('admin.layout')
 
 @section('content')
-<h2 class="page-header">@lang('message.users')</h2>
+<h1 class="page-header">@lang('message.lpz')</h1>
+
+<a href="{{ route('admin.lpz.create') }}" class="btn fa fa-plus"> @lang('message.create')</a>
 
 <div class="table-responsive">
   <table class="table table-hover">
     <thead>
       <tr>
-        <th scope="col">@lang('message.actions')</th>
-        <th scope="col">@lang('message.username')</th>
-        <th scope="col">@lang('message.name')</th>
-        <th scope="col">@lang('message.email')</th>
-        <th scope="col">@lang('message.role')</th>
+        <th>id</th>
+        <th>@lang('message.actions')</th>
+        <th>@lang('message.name')</th>
       </tr>
     </thead>
-    @foreach($users as $user)
+    @foreach($items as $item)
       <tr>
+        <td>{{$item->id}}</td>
         <td>
-          <a href="{{ route('admin.user.edit',    ['id'=>$user->id]) }}" class="btn fa fa-pencil"></a>
-          <a href="{{ route('admin.user.destroy', ['id'=>$user->id]) }}" class="btn fa fa-trash-o delete"></a>
+          {{-- <a href="{{ route('admin.lpz.show', ['id'=>$item->id]) }}" class="btn fa fa-eye"></a> --}}
+          <a href="{{ route('admin.lpz.edit', ['id'=>$item->id]) }}" class="btn fa fa-pencil"></a>
+          {{-- <a href="{{ route('admin.lpz.destroy', ['id'=>$item->id]) }}" class="btn fa fa-trash-o delete"></a> --}}
         </td>
-        <td>{{$user->username}}</td>
-        <td>{{$user->name}}</td>
-        <td>{{$user->email}}</td>
-        <td>{{$user->role}}</td>
+        <td>{{$item->name}}</td>
       </tr>
-
     @endforeach
   </table>
 </div>
 
 @endsection
-
 
 @section('scripts')
   <script>
