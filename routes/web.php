@@ -17,18 +17,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//Frontend
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Social login
 Route::get('/login/{social}','Auth\LoginController@socialLogin')->where('social','twitter|facebook|linkedin|google|github|bitbucket');
 Route::get('/login/{social}/callback','Auth\LoginController@handleProviderCallback')->where('social','twitter|facebook|linkedin|google|github|bitbucket');
 
+// Admin
 Route::group(['as' => 'admin.', 'middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function() {
 	App::setLocale('ua');
 	Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
 	Route::resource('user', 'UserController');
 });
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 

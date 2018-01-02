@@ -28,7 +28,7 @@
                 <i class="fa fa-fw fa-tachometer"></i> <span class="d-none d-md-inline">@lang('message.dashboard')</span>
             </a>
 
-            <ul class="nav">
+            <ul class="navbar-nav flex-row">
               <li class="nav-item">
                 <a href="/" class="nav-link"><i class="fa fa-fw fa-home"></i> <span class="d-none d-md-inline">@lang('message.to_site')</span></a>
               </li>
@@ -42,10 +42,7 @@
                         Logout
                     </a>
 
-                      <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                            style="display: none;">
-                          {{ csrf_field() }}
-                      </form>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
                   </div>
               </li>
 
@@ -59,13 +56,15 @@
         </div>
 
         {{-- SIDEBAR --}}
-        <div class="collapse navbar-collapse " id="navbarCollapse">
-          <ul class="nav side-nav">
-            <li>
-              <a href="#"><i class="fa fa-fw fa-picture-o"></i> @lang('message.item')</a>
-            </li>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav flex-column side-nav">
 
-          </ul>
+            <a class="nav-item nav-link" href="{{route('admin.user.index')}}"><i class="fa fa-fw fa-users"></i> @lang('message.users')</a>
+
+            <a class="nav-item nav-link" href="#"><i class="fa fa-fw fa-users"></i> @lang('message.item')</a>
+
+
+          </div>
         </div>
     </nav>
 

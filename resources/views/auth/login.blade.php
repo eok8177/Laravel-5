@@ -68,7 +68,9 @@
                                     Login
                                 </button>
 
-                                <a href="{{ url('login/google') }}" class="btn btn-info">or Login with <i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                <span class="text">or Login with </span>
+                                <a href="{{ url('login/google') }}" class="btn fa fa-google-plus"></a>
+                                <a href="{{ url('login/facebook') }}" class="btn fa fa-facebook"></a>
                                 <div><a class="btn btn-link" href="{{ route('password.request') }}">
                                     Forgot Your Password?
                                 </a></div>
