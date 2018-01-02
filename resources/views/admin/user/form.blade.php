@@ -5,18 +5,23 @@
 <input type="hidden" name="redirect" value="dashboard">
 
 <div class="form-group">
-  <label for="">{{Lang::get('message.username')}}</label>
+  <label for="username">{{Lang::get('message.username')}}</label>
   <input type="text" name="username" value="{{$user->username}}" class="form-control">
 </div>
 
 <div class="form-group">
-  <label for="">{{Lang::get('message.name')}}</label>
+  <label for="name">{{Lang::get('message.name')}}</label>
   <input type="text" name="name" value="{{$user->name}}" class="form-control">
 </div>
 
 <div class="form-group">
-  <label for="">{{Lang::get('message.email')}}</label>
+  <label for="email">{{Lang::get('message.email')}}</label>
   <input type="text" name="email" value="{{$user->email}}" class="form-control">
+</div>
+
+<div class="form-group">
+  <label for="role">{{Lang::get('message.role')}}</label>
+  {!! Form::select('role', ['user' => 'User', 'admin' => 'Admin'], $user->role, ['class' => 'form-control']) !!}
 </div>
 
 <hr>

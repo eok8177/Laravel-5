@@ -25,7 +25,7 @@ Route::get('/login/{social}','Auth\LoginController@socialLogin')->where('social'
 Route::get('/login/{social}/callback','Auth\LoginController@handleProviderCallback')->where('social','twitter|facebook|linkedin|google|github|bitbucket');
 
 // Admin
-Route::group(['as' => 'admin.', 'middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function() {
+Route::group(['as' => 'admin.', 'middleware' => 'roles','roles' =>['admin', 'sadmin'], 'namespace' => 'Admin', 'prefix' => 'admin'], function() {
 	App::setLocale('ua');
 	Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
 	Route::resource('user', 'UserController');

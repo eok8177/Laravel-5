@@ -59,7 +59,11 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <div class="navbar-nav flex-column side-nav">
 
-            <a class="nav-item nav-link" href="{{route('admin.user.index')}}"><i class="fa fa-fw fa-users"></i> @lang('message.users')</a>
+            <a class="nav-item nav-link" data-toggle="collapse" href="#usersNav" role="button" aria-expanded="false"><i class="fa fa-fw fa-users"></i> @lang('message.users')</a>
+              <div id="usersNav" class="collapse">
+              <a class="nav-item nav-link" href="{{route('admin.user.create')}}"><i class="fa fa-fw fa-user"></i> @lang('message.create')</a>
+              <a class="nav-item nav-link" href="{{route('admin.user.index')}}"><i class="fa fa-fw fa-users"></i> @lang('message.users')</a>
+            </div>
 
             <a class="nav-item nav-link" href="#"><i class="fa fa-fw fa-users"></i> @lang('message.item')</a>
 

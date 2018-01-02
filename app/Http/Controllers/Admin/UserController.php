@@ -18,19 +18,32 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('admin.user.create');
+        return view('admin.user.create', ['user' => new User]);
     }
 
     public function store(Request $request, User $user)
     {
-        $user = $user->create($request->all());
+        $request->validate([
+            'username' => 'required|unique:users',
+            'email' => 'required|unique:users',
+        ]);
 
-        return redirect()->route('admin.user.index');
+        $data = $request->all();
+
+        if (!$data['password']) {
+            $data['password'] = bcrypt('123456');
+        } else {
+            $data['password'] = bcrypt($data['password']);
+        }
+
+        $user = $user->create($data);
+
+        return redirect()->route('admin.user.index')->with('success', 'User created');
     }
 
     public function show(User $user)
     {
-        return view('admin.user.show', ['user' => $user]);
+        return redirect()->route('admin.user.index');
     }
 
     public function edit(User $user)
@@ -62,6 +75,8 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return 'success';
+        return response()->json([
+            'status' => 'success'
+        ]);
     }
 }

@@ -11,6 +11,7 @@
         <th scope="col">@lang('message.username')</th>
         <th scope="col">@lang('message.name')</th>
         <th scope="col">@lang('message.email')</th>
+        <th scope="col">@lang('message.role')</th>
       </tr>
     </thead>
     @foreach($users as $user)
@@ -22,6 +23,7 @@
         <td>{{$user->username}}</td>
         <td>{{$user->name}}</td>
         <td>{{$user->email}}</td>
+        <td>{{$user->role}}</td>
       </tr>
 
     @endforeach
