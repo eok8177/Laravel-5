@@ -37,8 +37,7 @@
 </div>
 
 {{ $items->links() }}
-<a href="#wrapper" class="btn btn-default pull-right"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
-
+<a href="#app" class="btn btn-info pull-right"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
 
 @endsection
 

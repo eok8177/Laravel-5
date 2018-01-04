@@ -35,5 +35,5 @@
 </div>
 
 {{ $works->links('vendor.pagination.bootstrap-4') }}
-<a href="#page-wrapper" class="btn btn-default pull-right"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+<a href="#app" class="btn btn-info pull-right"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
 @endsection
