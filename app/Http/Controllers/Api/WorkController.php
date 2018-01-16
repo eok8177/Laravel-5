@@ -16,8 +16,8 @@ class WorkController extends Controller
         $work = Work::orderBy('id', 'desc')->get();
         $response = [
             'work' => $work,
-            'lpz' => Lpz::orderBy('name', 'asc')->pluck('name', 'id')->all(),
-            'cat' => WorkCategories::pluck('name', 'id')->all(),
+            'lpz' => Lpz::orderBy('name', 'asc')->get()->keyBy('id'),
+            'cat' => WorkCategories::get()->keyBy('id'),
         ];
         return response()->json($response, 200);
     }
@@ -44,9 +44,9 @@ class WorkController extends Controller
         return response()->json(['work' => $work], 200);
     }
 
-    public function deleteWork(Work $lpz)
+    public function deleteWork(Work $work)
     {
-        $Work->delete();
+        $work->delete();
         return response()->json(['message'=>'Deleted'], 200);
     }
 }
