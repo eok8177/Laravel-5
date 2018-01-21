@@ -11,7 +11,8 @@
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.5",
-        "laravelnews/laravel-twbs4": "^1.1"
+        "laravelnews/laravel-twbs4": "^1.1",
+        "tymon/jwt-auth": "^0.5.12"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
